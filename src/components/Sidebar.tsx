@@ -89,15 +89,11 @@ const UnAuthenticatedSidebar = () => (
             Connecter vous pour acceder à votre profil et vous connecter avec les autres
           </p>
           <SignInButton mode="modal">
-            <Button className="w-full" variant="outline">
+            <Button className="w-full" variant="default">
               Se connecter
             </Button>
           </SignInButton>
-          <SignUpButton mode="modal">
-            <Button className="w-full mt-2" variant="default">
-              Se deconnecter
-            </Button>
-          </SignUpButton>
+          
         </CardContent>
       </Card>
     </div>

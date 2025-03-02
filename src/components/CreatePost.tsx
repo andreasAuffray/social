@@ -9,6 +9,7 @@ import { ImageIcon, Loader2Icon, SendIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { createPost } from "@/actions/post.action";
 import toast from "react-hot-toast";
+import ImageUpload from "./ImageUpload";
 
 function CreatePost() {
   const { user } = useUser();
@@ -29,11 +30,11 @@ function CreatePost() {
         setImageUrl("");
         setShowImageUpload(false);
 
-        toast.success("Post publie avec succes");
+        toast.success("Post created successfully");
       }
     } catch (error) {
-      console.error("Erreur pour la creation du post:", error);
-      toast.error("Erreur pour la creation du post");
+      console.error("Failed to create post:", error);
+      toast.error("Failed to create post");
     } finally {
       setIsPosting(false);
     }
@@ -48,7 +49,7 @@ function CreatePost() {
               <AvatarImage src={user?.imageUrl || "/avatar.png"} />
             </Avatar>
             <Textarea
-              placeholder="Qu'est-ce qui vous preoccupe ?"
+              placeholder="What's on your mind?"
               className="min-h-[100px] resize-none border-none focus-visible:ring-0 p-0 text-base"
               value={content}
               onChange={(e) => setContent(e.target.value)}
@@ -58,7 +59,14 @@ function CreatePost() {
 
           {(showImageUpload || imageUrl) && (
             <div className="border rounded-lg p-4">
-              
+              <ImageUpload
+                endpoint="postImage"
+                value={imageUrl}
+                onChange={(url) => {
+                  setImageUrl(url);
+                  if (!url) setShowImageUpload(false);
+                }}
+              />
             </div>
           )}
 

@@ -42,12 +42,12 @@ async function Sidebar() {
               <div className="flex justify-between">
                 <div>
                   <p className="font-medium">{user._count.following}</p>
-                  <p className="text-xs text-muted-foreground">Following</p>
+                  <p className="text-xs text-muted-foreground">Abonnement</p>
                 </div>
                 <Separator orientation="vertical" />
                 <div>
                   <p className="font-medium">{user._count.followers}</p>
-                  <p className="text-xs text-muted-foreground">Followers</p>
+                  <p className="text-xs text-muted-foreground">Abonnes</p>
                 </div>
               </div>
               <Separator className="my-4" />
@@ -56,7 +56,7 @@ async function Sidebar() {
             <div className="w-full space-y-2 text-sm">
               <div className="flex items-center text-muted-foreground">
                 <MapPinIcon className="w-4 h-4 mr-2" />
-                {user.location || "No location"}
+                {user.location || "Pas de location"}
               </div>
               <div className="flex items-center text-muted-foreground">
                 <LinkIcon className="w-4 h-4 mr-2 shrink-0" />
@@ -65,7 +65,7 @@ async function Sidebar() {
                     {user.website}
                   </a>
                 ) : (
-                  "No website"
+                  "Pas de site"
                 )}
               </div>
             </div>
@@ -82,20 +82,20 @@ const UnAuthenticatedSidebar = () => (
     <div className="sticky top-20">
       <Card>
         <CardHeader>
-          <CardTitle className="text-center text-xl font-semibold">Welcome Back!</CardTitle>
+          <CardTitle className="text-center text-xl font-semibold">Rebienvenu</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-center text-muted-foreground mb-4">
-            Login to access your profile and connect with others.
+            Connecter vous pour acceder à votre profil et vous connecter avec les autres
           </p>
           <SignInButton mode="modal">
             <Button className="w-full" variant="outline">
-              Login
+              Se connecter
             </Button>
           </SignInButton>
           <SignUpButton mode="modal">
             <Button className="w-full mt-2" variant="default">
-              Sign Up
+              Se deconnecter
             </Button>
           </SignUpButton>
         </CardContent>

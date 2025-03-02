@@ -70,14 +70,14 @@ function MobileNavbar() {
                 <SignOutButton>
                   <Button variant="ghost" className="flex items-center gap-3 justify-start w-full">
                     <LogOutIcon className="w-4 h-4" />
-                    Logout
+                    Se deconnecter
                   </Button>
                 </SignOutButton>
               </>
             ) : (
               <SignInButton mode="modal">
                 <Button variant="default" className="w-full">
-                  Sign In
+                  Se connecter
                 </Button>
               </SignInButton>
             )}

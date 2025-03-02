@@ -30,11 +30,11 @@ function CreatePost() {
         setImageUrl("");
         setShowImageUpload(false);
 
-        toast.success("Post created successfully");
+        toast.success("Post crée avec succes");
       }
     } catch (error) {
-      console.error("Failed to create post:", error);
-      toast.error("Failed to create post");
+      console.error("Erreur à la création du post:", error);
+      toast.error("Erreur à la création du post");
     } finally {
       setIsPosting(false);
     }
@@ -49,7 +49,7 @@ function CreatePost() {
               <AvatarImage src={user?.imageUrl || "/avatar.png"} />
             </Avatar>
             <Textarea
-              placeholder="What's on your mind?"
+              placeholder="Qu'est ce qui vous preocupe ?"
               className="min-h-[100px] resize-none border-none focus-visible:ring-0 p-0 text-base"
               value={content}
               onChange={(e) => setContent(e.target.value)}
@@ -92,7 +92,7 @@ function CreatePost() {
               {isPosting ? (
                 <>
                   <Loader2Icon className="size-4 mr-2 animate-spin" />
-                  Posting...
+                  Poster...
                 </>
               ) : (
                 <>

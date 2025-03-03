@@ -18,14 +18,15 @@ async function DesktopNavbar() {
           <span className="hidden lg:inline">Home</span>
         </Link>
       </Button>
-      <Button variant="ghost" className="flex items-center gap-2" asChild>
-  <Link href="/sport-news">
-    <span className="hidden lg:inline">Actu</span>
-  </Link>
-</Button>
+      
 
       {user ? (
         <>
+        <Button variant="ghost" className="flex items-center gap-2" asChild>
+        <Link href="/sport-news">
+          <span className="hidden lg:inline">Actu</span>
+        </Link>
+      </Button>
           <Button variant="ghost" className="flex items-center gap-2" asChild>
             <Link href="/notifications">
               <BellIcon className="w-4 h-4" />
@@ -42,6 +43,8 @@ async function DesktopNavbar() {
               <span className="hidden lg:inline">Profile</span>
             </Link>
           </Button>
+
+          
           <UserButton />
         </>
       ) : (

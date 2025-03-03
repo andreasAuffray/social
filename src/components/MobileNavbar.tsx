@@ -73,6 +73,11 @@ function MobileNavbar() {
                     Se deconnecter
                   </Button>
                 </SignOutButton>
+                <Button variant="ghost" className="flex items-center gap-2" asChild>
+        <Link href="/news">
+          <span className="hidden lg:inline">Actu</span> 
+        </Link>
+      </Button>
               </>
             ) : (
               <SignInButton mode="modal">

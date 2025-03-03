@@ -18,6 +18,11 @@ async function DesktopNavbar() {
           <span className="hidden lg:inline">Home</span>
         </Link>
       </Button>
+      <Button variant="ghost" className="flex items-center gap-2" asChild>
+  <Link href="/sport-news">
+    <span className="hidden lg:inline">Actu</span>
+  </Link>
+</Button>
 
       {user ? (
         <>

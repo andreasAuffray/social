@@ -1,6 +1,9 @@
 'use client';
 
+import { createPost } from '@/actions/post.action';
+import { Button } from '@/components/ui/button';
 import React, { useEffect, useState } from 'react';
+import router, { useRouter } from 'next/router'
 
 const API_KEY = '67e01ecd720fe2783386050f52eb5fc5'; // Remplace par ta clé API GNews
 const API_URL = `https://gnews.io/api/v4/top-headlines?topic=sports&lang=fr&token=${API_KEY}`;
@@ -45,6 +48,24 @@ const SportsNews: React.FC = () => {
     fetchNews();
   }, []);
 
+  const Repost = async (article: Article) => {
+    try {
+     const content = `${article.title}  ${article.description}  ${article.url} `;
+     
+     const result = await createPost(content, article.image);
+      if (result && result.success) {
+        alert('Article republié avec succès!');
+        router.push('/'); // Redirect to home page after republishing
+      } else {
+        throw new Error(result?.error || 'Erreur inconnue');
+      }
+    } catch (err) {
+      console.error('Erreur lors de la republication de l\'article :', err);
+      alert('Erreur lors de la republication de l\'article.');
+    }
+  };
+
+
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold text-center mb-6">📰 Actualités Sportives</h1>
@@ -75,6 +96,14 @@ const SportsNews: React.FC = () => {
                 >
                   Lire l'article →
                 </a>
+                <div>
+                <Button onClick={() => Repost(article)}>
+                    Republier
+                  </Button>
+
+                </div>
+                
+                
               </div>
             </div>
           ))}

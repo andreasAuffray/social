@@ -19,6 +19,7 @@ async function Navbar() {
           </div>
 
           <DesktopNavbar />
+          
           <MobileNavbar />
         </div>
       </div>

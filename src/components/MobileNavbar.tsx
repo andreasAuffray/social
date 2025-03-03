@@ -63,7 +63,7 @@ function MobileNavbar() {
                 </Button>
 
                 {user && (
-                  <Button variant="ghost" className="flex items-center gap-2" asChild>
+                  <Button variant="ghost" className="flex items-center gap-3 justify-start" asChild>
                     <Link href={`/profile/${user.username ?? user.primaryEmailAddress?.emailAddress.split("@")[0]}`}>
                       <UserIcon className="w-4 h-4" />
                       <span className="hidden lg:inline">Profile</span>

@@ -32,7 +32,7 @@ const SportsNews: React.FC = () => {
           throw new Error(`Erreur HTTP : ${response.status}`);
         }
         const data = await response.json();
-        console.log(data); // Debugging API response
+        console.log(data);
         if (!data.articles) {
           throw new Error('Format de réponse invalide.');
         }
@@ -55,7 +55,7 @@ const SportsNews: React.FC = () => {
      const result = await createPost(content, article.image);
       if (result && result.success) {
         alert('Article republié avec succès!');
-        router.push('/'); // Redirect to home page after republishing
+        router.push('/'); 
       } else {
         throw new Error(result?.error || 'Erreur inconnue');
       }

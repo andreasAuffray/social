@@ -1,4 +1,3 @@
-
 "use client";
 
 import {
@@ -12,19 +11,17 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { useState } from "react";
-import { useAuth, SignInButton, SignOutButton } from "@clerk/nextjs";
+import { useState, useEffect } from "react";
+import { useAuth, SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { currentUser } from "@clerk/nextjs/server";
 
-async function MobileNavbar() {
+function MobileNavbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { isSignedIn } = useAuth();
   const { theme, setTheme } = useTheme();
-    const user = await currentUser();
+  const { user } = useUser(); 
   
-
   return (
     <div className="flex md:hidden items-center space-x-2">
       <Button
@@ -64,27 +61,28 @@ async function MobileNavbar() {
                     Notifications
                   </Link>
                 </Button>
-                <Button variant="ghost" className="flex items-center gap-2" asChild>
-            <Link
-              href={`/profile/${
-                user.username ?? user.emailAddresses[0].emailAddress.split("@")[0]
-              }`}
-            >
-              <UserIcon className="w-4 h-4" />
-              <span className="hidden lg:inline">Profile</span>
-            </Link>
-          </Button>
+
+                {user && (
+                  <Button variant="ghost" className="flex items-center gap-2" asChild>
+                    <Link href={`/profile/${user.username ?? user.primaryEmailAddress?.emailAddress.split("@")[0]}`}>
+                      <UserIcon className="w-4 h-4" />
+                      <span className="hidden lg:inline">Profile</span>
+                    </Link>
+                  </Button>
+                )}
+
                 <SignOutButton>
                   <Button variant="ghost" className="flex items-center gap-3 justify-start w-full">
                     <LogOutIcon className="w-4 h-4" />
                     Se deconnecter
                   </Button>
                 </SignOutButton>
+
                 <Button variant="ghost" className="flex items-center gap-2" asChild>
-        <Link href="/news">
-          <span className="hidden lg:inline">Actu</span> 
-        </Link>
-      </Button>
+                  <Link href="/news">
+                    <span className="hidden lg:inline">Actu</span> 
+                  </Link>
+                </Button>
               </>
             ) : (
               <SignInButton mode="modal">

@@ -50,12 +50,12 @@ const SportsNews: React.FC = () => {
 
   const Repost = async (article: Article) => {
     try {
-     const content = `${article.title}  ${article.description}  ${article.url} `;
+     const content = `${article.title}  \n ${article.description} \n ${article.url} `;
      
      const result = await createPost(content, article.image);
       if (result && result.success) {
         alert('Article republié avec succès!');
-        router.push('/'); 
+        
       } else {
         throw new Error(result?.error || 'Erreur inconnue');
       }

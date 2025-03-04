@@ -55,6 +55,12 @@ function MobileNavbar() {
 
             {isSignedIn ? (
               <>
+              <Button variant="ghost" className="flex items-center gap-3 justify-start" asChild>
+                  <Link href="/news">
+                    Actu
+                  </Link>
+                </Button>
+                
                 <Button variant="ghost" className="flex items-center gap-3 justify-start" asChild>
                   <Link href="/notifications">
                     <BellIcon className="w-4 h-4" />
@@ -66,7 +72,7 @@ function MobileNavbar() {
                   <Button variant="ghost" className="flex items-center gap-3 justify-start" asChild>
                     <Link href={`/profile/${user.username ?? user.primaryEmailAddress?.emailAddress.split("@")[0]}`}>
                       <UserIcon className="w-4 h-4" />
-                      <span className="hidden lg:inline">Profile</span>
+                      Profile
                     </Link>
                   </Button>
                 )}
@@ -78,11 +84,7 @@ function MobileNavbar() {
                   </Button>
                 </SignOutButton>
 
-                <Button variant="ghost" className="flex items-center gap-2" asChild>
-                  <Link href="/news">
-                    <span className="hidden lg:inline">Actu</span> 
-                  </Link>
-                </Button>
+                
               </>
             ) : (
               <SignInButton mode="modal">

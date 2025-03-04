@@ -8,7 +8,9 @@ import {
   MoonIcon,
   SunIcon,
   UserIcon,
+  Newspaper,
 } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { useState, useEffect } from "react";
@@ -57,10 +59,11 @@ function MobileNavbar() {
               <>
               <Button variant="ghost" className="flex items-center gap-3 justify-start" asChild>
                   <Link href="/news">
+                  <Newspaper className="w-4 h-4" />
                     Actu
                   </Link>
                 </Button>
-                
+
                 <Button variant="ghost" className="flex items-center gap-3 justify-start" asChild>
                   <Link href="/notifications">
                     <BellIcon className="w-4 h-4" />

@@ -4,6 +4,7 @@ import { createPost } from '@/actions/post.action';
 import { Button } from '@/components/ui/button';
 import React, { useEffect, useState } from 'react';
 import router, { useRouter } from 'next/router'
+import { Repeat } from 'lucide-react';
 
 const API_KEY = '67e01ecd720fe2783386050f52eb5fc5'; // Remplace par ta clé API GNews
 const API_URL = `https://gnews.io/api/v4/top-headlines?topic=sports&lang=fr&token=${API_KEY}`;
@@ -98,7 +99,8 @@ const SportsNews: React.FC = () => {
                 </a>
                 <div>
                 <Button onClick={() => Repost(article)}>
-                    Republier
+                <Repeat  className="w-4 h-4" />
+
                   </Button>
 
                 </div>

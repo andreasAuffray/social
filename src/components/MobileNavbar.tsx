@@ -58,7 +58,7 @@ function MobileNavbar() {
             {isSignedIn ? (
               <>
               <Button variant="ghost" className="flex items-center gap-3 justify-start" asChild>
-                  <Link href="/news">
+                  <Link href="/sport-news">
                   <Newspaper className="w-4 h-4" />
                     Actu
                   </Link>
